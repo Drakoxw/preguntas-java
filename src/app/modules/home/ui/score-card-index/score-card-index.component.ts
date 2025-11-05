@@ -25,8 +25,7 @@ export default class ScoreCardIndexComponent implements OnInit {
       this.score = score;
       this.maxScore = total;
       if (name) {
-
-        this.title = `Tu resultado ${Base64Util.decode(name)}: 🧬`;
+        this.title = `Tu resultado ${Base64Util.decode(name).trim().toUpperCase()}: 🧬`;
       }
     });
   }

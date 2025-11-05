@@ -92,18 +92,17 @@
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
 >
   <div class="w-full flex flex-col gap-4 justify-center py-6 items-center">
-
     <div class="flex w-full gap-4 justify-center items-center">
       <p-floatlabel>
-        <input
-          pInputText
-          id="over_label"
-          [(ngModel)]="name"
-          autocomplete="off"
-        />
+        <input pInputText id="over_label" [(ngModel)]="name" autocomplete="off" />
         <label for="over_label">Agrega tu nombre:</label>
       </p-floatlabel>
-      <p-button severity="success"  icon="pi pi-check" aria-label="Crear QR" (onClick)="updateQrData()" />
+      <p-button
+        severity="success"
+        icon="pi pi-check"
+        aria-label="Crear QR"
+        (onClick)="updateQrData()"
+      />
     </div>
 
     @if (qrResultData()) {
@@ -113,7 +112,8 @@
       [errorCorrectionLevel]="'M'"
       class="border shadow-lg p-4 bg-white rounded-xl"
     ></qrcode>
+    @if (name == 'drako') {
     <p>{{ qrResultData() }}</p>
-    }
+    } }
   </div>
 </p-dialog>
