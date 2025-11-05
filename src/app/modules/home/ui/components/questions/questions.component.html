@@ -1,0 +1,119 @@
+<div class="max-w-2xl mx-auto bg-white shadow-md rounded-2xl p-6">
+  <h2 class="text-xl font-semibold text-gray-800 mb-4">
+    Pregunta {{ currentIndex + 1 }} de {{ questions.length }}
+  </h2>
+
+  <p class="text-lg font-medium text-gray-700 mb-6">
+    {{ currentQuestion.text }}
+  </p>
+
+  <div class="space-y-3">
+    @for(option of currentQuestion.options; track option.id) {
+    <div
+      (click)="onSelectOption(option.id)"
+      [ngClass]="{
+        'cursor-pointer border border-gray-300 hover:bg-blue-50': !answered,
+        'border-green-500 bg-green-100 text-green-800':
+          answered && option.id === currentQuestion.correctAnswerId,
+        'border-red-500 bg-red-100 text-red-800':
+          answered &&
+          selectedOptionId === option.id &&
+          option.id !== currentQuestion.correctAnswerId,
+        'border-gray-200 bg-gray-50': answered && option.id !== selectedOptionId
+      }"
+      class="w-full p-3 rounded-xl transition-all duration-200"
+    >
+      {{ option.text }}
+    </div>
+    }
+  </div>
+
+  <div class="mt-6 flex justify-between items-center">
+    @if (answered) {
+    <div>
+      <p
+        class="text-gray-700"
+        [ngClass]="{
+          'text-green-600': selectedOptionId === currentQuestion.correctAnswerId,
+          'text-red-600': selectedOptionId !== currentQuestion.correctAnswerId
+        }"
+      >
+        {{
+          selectedOptionId === currentQuestion.correctAnswerId ? '✅ ¡Correcto!' : '❌ Incorrecto'
+        }}
+      </p>
+    </div>
+    <div>
+      @if (selectedOptionId !== currentQuestion.correctAnswerId) {
+      <button
+        (click)="showDialog()"
+        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all"
+      >
+        Explicación
+      </button>
+      }
+    </div>
+    <div>
+      @if (!isLastQuestion) {
+      <button
+        (click)="nextQuestion()"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all"
+      >
+        Siguiente
+      </button>
+      } @if (isLastQuestion) {
+      <button
+        (click)="showResultDialog()"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all"
+      >
+        Puntaje final
+      </button>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+<p-dialog
+  header="Explicación: "
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+>
+  <p class="mb-8">{{ currentQuestion.explanation ?? '---' }}</p>
+</p-dialog>
+
+<p-dialog
+  header="Resultado: "
+  [modal]="true"
+  [(visible)]="result"
+  [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+>
+  <div class="w-full flex flex-col gap-4 justify-center py-6 items-center">
+
+    <div class="flex w-full gap-4 justify-center items-center">
+      <p-floatlabel>
+        <input
+          pInputText
+          id="over_label"
+          [(ngModel)]="name"
+          autocomplete="off"
+        />
+        <label for="over_label">Agrega tu nombre:</label>
+      </p-floatlabel>
+      <p-button severity="success"  icon="pi pi-check" aria-label="Crear QR" (onClick)="updateQrData()" />
+    </div>
+
+    @if (qrResultData()) {
+    <qrcode
+      [qrdata]="qrResultData()"
+      [width]="256"
+      [errorCorrectionLevel]="'M'"
+      class="border shadow-lg p-4 bg-white rounded-xl"
+    ></qrcode>
+    <p>{{ qrResultData() }}</p>
+    }
+  </div>
+</p-dialog>

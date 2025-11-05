@@ -1,0 +1,17 @@
+<div class="flex flex-col items-center gap-4 p-6">
+  <h2 class="text-xl font-bold">Nivel {{ level }}</h2>
+
+  <!-- Generador de QR -->
+  <qrcode
+    [qrdata]="qrData"
+    [width]="qrSize"
+    [errorCorrectionLevel]="'M'"
+    class="border shadow-lg p-4 bg-white rounded-xl"
+  ></qrcode>
+
+  <div>
+    <a [href]="qrData" pButton target="_blank" rel="noopener noreferrer">
+      <span pButtonLabel>Ir al nivel <b>{{ level | uppercase }}</b></span>
+    </a>
+  </div>
+</div>

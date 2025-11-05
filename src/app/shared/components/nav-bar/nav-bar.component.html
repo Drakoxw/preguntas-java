@@ -1,0 +1,55 @@
+<nav class="bg-white shadow-lg h-16">
+  @if (showNav) {
+  <div class="max-w-[1400px] mx-auto pl-4 pr-8">
+    <div class="flex justify-between">
+      <div class="flex space-x-4">
+        <!-- Logo -->
+        <div>
+          <a
+            routerLink="/"
+            class="flex items-center p-2 text-gray-700 hover:text-gray-900"
+          >
+            <img
+              class="w-12 h-12"
+              src="/assets/img/logo.webp"
+              alt="drako-logo"
+            />
+            <div class="flex flex-col ml-4">
+              <span class="font-bold text-xl sm:text-3xl"
+                >Cuestionario de JAVA</span
+              >
+              <small
+                class="text-[8px] hidden text-end font-bold text-gray-700 sm:block"
+                >By Yeryelis</small
+              >
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- Navbar Desktop -->
+      <div class="hidden md:flex items-center space-x-1 font-medium">
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button class="mobile-menu-button" (click)="toggleMenu()">
+          <svg
+            class="w-6 h-6 text-gray-700"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  }
+</nav>

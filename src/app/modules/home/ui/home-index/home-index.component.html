@@ -1,0 +1,12 @@
+@if (questions.length > 0) {
+<div class="w-full p-8">
+  <p-message class="w-full" [severity]="titles[level].severity"
+    ><h5 class="w-full block font-bold text-center">{{ titles[level].title }}</h5></p-message
+  >
+</div>
+<app-questions class="w-full" [questions]="questions" />
+} @else {
+<div class="w-full h-full flex flex-col justify-center items-center px-4">
+  <img src="/assets/img/gifs-gatitos-suerte.gif" alt="gif-gatito" />
+</div>
+}
