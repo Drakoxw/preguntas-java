@@ -79,7 +79,7 @@ export class QuestionsComponent {
     const score = `${Base64Util.encode(this.score.toString())}`;
     const length = `${Base64Util.encode(this._questions().length.toString())}`;
     setTimeout(() => {
-      this.qrResultData.set(`${this.currentUrl}/score?n${name}=&p=${score}&l=${length}`);
+      this.qrResultData.set(`${this.currentUrl}/score?n=${name}&p=${score}&l=${length}`);
     }, 250);
   }
 
