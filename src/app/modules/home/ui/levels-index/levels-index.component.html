@@ -1,5 +1,11 @@
 <div class="flex w-full justify-center items-center gap-4 flex-wrap mt-8 ">
-  <app-qr-generator level="easy"></app-qr-generator>
-  <app-qr-generator level="medium"></app-qr-generator>
-  <app-qr-generator level="hard"></app-qr-generator>
+  @if(store.mode() === 'java') {
+    @for(level of levels; track level) {
+      <app-qr-generator [level]="level"></app-qr-generator>
+    }
+  } @else {
+    @for(topic of topics; track topic) {
+      <app-qr-generator [topic]="topic"></app-qr-generator>
+    }
+  }
 </div>

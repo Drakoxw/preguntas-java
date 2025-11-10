@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { QrGeneratorComponent } from '../components';
+import { UserStore } from '../../../../core/store';
+import { Level, Topic } from '@interfaces/questions';
 
 @Component({
   selector: 'app-levels-index',
@@ -10,6 +12,11 @@ import { QrGeneratorComponent } from '../components';
   ],
 })
 export default class LevelsIndexComponent implements OnInit {
+
+  readonly store = inject(UserStore);
+
+  levels: Level[] = ['easy', 'medium', 'hard'];
+  topics: Topic[] = ['optimization', 'limits', 'continuity', 'derivatives'];
 
   constructor() { }
 

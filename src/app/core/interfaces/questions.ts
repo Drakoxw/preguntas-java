@@ -13,3 +13,11 @@ export interface IQuestion {
 }
 
 export type Level = 'easy' | 'medium' | 'hard';
+
+export type Mode = 'java' | 'tracker';
+
+export type Topic = 'optimization' | 'limits' | 'continuity' | 'derivatives';
+
+export interface IQuizQuestion extends IQuestion {
+  userAnswerId?: string;
+}

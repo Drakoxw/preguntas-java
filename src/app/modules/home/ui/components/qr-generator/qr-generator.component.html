@@ -1,5 +1,10 @@
 <div class="flex flex-col items-center gap-4 p-6">
-  <h2 class="text-xl font-bold">Nivel {{ level }}</h2>
+  @if(level) {
+    <h2 class="text-xl font-bold">Nivel {{ level | uppercase }}</h2>
+  }
+  @if(topic) {
+    <h2 class="text-xl font-bold">Tema {{ topic | uppercase }}</h2>
+  }
 
   <!-- Generador de QR -->
   <qrcode
@@ -11,7 +16,12 @@
 
   <div>
     <a [href]="qrData" pButton target="_blank" rel="noopener noreferrer">
-      <span pButtonLabel>Ir al nivel <b>{{ level | uppercase }}</b></span>
+      @if(level) {
+        <span pButtonLabel>Ir al nivel <b>{{ level | uppercase }}</b></span>
+      }
+      @if(topic) {
+        <span pButtonLabel>Ir al tema <b>{{ topic | uppercase }}</b></span>
+      }
     </a>
   </div>
 </div>

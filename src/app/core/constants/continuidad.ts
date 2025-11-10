@@ -1,6 +1,6 @@
 import { IQuestion } from "@interfaces/questions";
 
-export const CONTINUIDADy: IQuestion[] = [
+export const CONTINUIDAD: IQuestion[] = [
   {
     "id": "CON-F1",
     "text": "Defina brevemente qué significa que una función sea continua en un punto.",

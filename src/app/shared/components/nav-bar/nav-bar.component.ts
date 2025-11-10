@@ -23,7 +23,6 @@ export class NavBarComponent implements OnDestroy {
     this.#subs.push(
       this.#router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          console.log(PRIVATES_ROUTES);
 
           this.showNav = false;
           PRIVATES_ROUTES.forEach((route) => {

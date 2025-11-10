@@ -5,30 +5,25 @@
       <div class="flex space-x-4">
         <!-- Logo -->
         <div>
-          <a
-            routerLink="/"
-            class="flex items-center p-2 text-gray-700 hover:text-gray-900"
-          >
+          <a routerLink="/" class="flex items-center p-2 text-gray-700 hover:text-gray-900">
             <img
               class="w-12 h-12"
-              src="/assets/img/logo.webp"
+              [src]="
+                store.mode() === 'java' ? '/assets/img/logo.webp' : '/assets/img/math-1.jpeg'
+              "
               alt="drako-logo"
             />
             <div class="flex flex-col ml-4">
-              <span class="font-bold text-xl sm:text-3xl"
-                >Cuestionario de JAVA</span
-              >
-              <small
-                class="text-[8px] hidden text-end font-bold text-gray-700 sm:block"
-                >By Yeryelis</small
+              <span class="font-bold text-xl sm:text-3xl">{{ store.nameApp() }}</span>
+              <small class="text-[8px] hidden text-end font-bold text-gray-700 sm:block"
+                >By {{ store.name() }}</small
               >
             </div>
           </a>
         </div>
       </div>
       <!-- Navbar Desktop -->
-      <div class="hidden md:flex items-center space-x-1 font-medium">
-      </div>
+      <div class="hidden md:flex items-center space-x-1 font-medium"></div>
 
       <div class="md:hidden flex items-center">
         <button class="mobile-menu-button" (click)="toggleMenu()">

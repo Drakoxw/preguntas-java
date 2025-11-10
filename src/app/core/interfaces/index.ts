@@ -1,3 +1,3 @@
 export * from './common'
-export * from './snack'
 export * from './table'
+export * from './questions'

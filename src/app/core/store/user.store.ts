@@ -1,17 +1,21 @@
+import { Mode } from '@interfaces/index';
 import { signalStore, withState } from '@ngrx/signals';
 
 interface State {
   name: string;
+  nameApp: string;
   loggedIn: boolean;
+  mode: Mode;
 }
 
 const initialState: State = {
-  name: 'Drako',
-  loggedIn: false
+  name: 'Yeryelis',
+  loggedIn: false,
+  nameApp: 'Cuestionario de JAVA',
+  mode: 'java'
 };
 
 export const UserStore = signalStore(
   { providedIn: 'root' },
   withState(initialState)
 );
-
