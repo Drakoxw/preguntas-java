@@ -30,6 +30,13 @@ export default class HomeIndexComponent {
     hard: { title: 'Nivel Difícil', severity: 'error' },
   }
 
+  titlesTopics: { [key in Topic]: { title: string, severity: Severity } } = {
+    optimization: { title: 'Optimización', severity: 'success' },
+    limits: { title: 'Límites', severity: 'warn' },
+    continuity: { title: 'Continuidad', severity: 'error' },
+    derivatives: { title: 'Derivadas', severity: 'info' },
+  }
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
