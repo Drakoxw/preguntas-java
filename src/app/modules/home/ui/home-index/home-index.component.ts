@@ -49,7 +49,9 @@ export default class HomeIndexComponent {
           this.questions = VECTOR_QUESTIONS[this.level];
         }
       } else {
-        this.questions = MATH_TRACKER[this.topic];
+        if (this.topic && this.topic in MATH_TRACKER) {
+          this.questions = MATH_TRACKER[this.topic];
+        }
       }
     });
   }
