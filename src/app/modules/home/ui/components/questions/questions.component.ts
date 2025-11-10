@@ -17,7 +17,11 @@ import { Base64Util } from '@shared/utils';
   imports: [CommonModule, ConfirmDialogModule, ButtonModule, DialogModule, FormsModule, QRCodeComponent, InputTextModule, FloatLabel]
 })
 export class QuestionsComponent {
-  @Input() questions: IQuestion[] = [];
+  @Input() lengthToShow: number = 5;
+  @Input() set questions(data: IQuestion[]) {
+    this._questions.set(this.filterRandomQuestions(data))
+  }
+  _questions = signal<IQuestion[]>([]);
   public visible = false;
 
   currentIndex = 0;
@@ -35,7 +39,7 @@ export class QuestionsComponent {
   }
 
   get currentQuestion(): IQuestion {
-    return this.questions[this.currentIndex];
+    return this._questions()[this.currentIndex];
   }
 
   onSelectOption(optionId: string) {
@@ -58,7 +62,7 @@ export class QuestionsComponent {
   }
 
   nextQuestion() {
-    if (this.currentIndex < this.questions.length - 1) {
+    if (this.currentIndex < this._questions().length - 1) {
       this.currentIndex++;
       this.selectedOptionId = null;
       this.answered = false;
@@ -66,14 +70,23 @@ export class QuestionsComponent {
   }
 
   get isLastQuestion(): boolean {
-    return this.currentIndex === this.questions.length - 1;
+    return this.currentIndex === this._questions().length - 1;
   }
 
   updateQrData() {
     this.qrResultData.set('');
+    const name = `${this.name ? Base64Util.encode(this.name) : ''}`;
+    const score = `${Base64Util.encode(this.score.toString())}`;
+    const length = `${Base64Util.encode(this._questions().length.toString())}`;
     setTimeout(() => {
-      this.qrResultData.set(`${this.currentUrl}/score?n=${this.name ? Base64Util.encode(this.name) : ''}&p=${Base64Util.encode(this.score.toString())}&l=${Base64Util.encode(this.questions.length.toString())}`);
+      this.qrResultData.set(`${this.currentUrl}/score?n${name}=&p=${score}&l=${length}`);
     }, 250);
+  }
+
+  /** Mezcla las preguntas y genera una lista aleatoria */
+  filterRandomQuestions(data: IQuestion[]): IQuestion[] {
+    const shuffled = data.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, this.lengthToShow);
   }
 
 }

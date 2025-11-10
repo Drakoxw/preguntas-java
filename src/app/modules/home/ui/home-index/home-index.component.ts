@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VECTOR_QUESTIONS } from '@constants/questions';
 
-import { QrGeneratorComponent, QuestionsComponent } from '@home-module/ui/components';
+import { QuestionsComponent } from '@home-module/ui/components';
 import { IQuestion, Level } from '@interfaces/questions';
 import { MessageModule } from 'primeng/message';
 
@@ -14,8 +14,7 @@ type Severity = 'success' | 'info' | 'warn' | 'error';
   styleUrls: ['./home-index.component.css'],
   imports: [
     QuestionsComponent,
-    MessageModule,
-    QrGeneratorComponent
+    MessageModule
   ],
 })
 export default class HomeIndexComponent {
