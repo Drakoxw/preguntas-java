@@ -11,8 +11,8 @@ interface State {
 const initialState: State = {
   name: 'Yeryelis',
   loggedIn: false,
-  nameApp: 'Cuestionario de JAVA',
-  mode: 'java'
+  nameApp: 'MATH TRACKER',
+  mode: 'tracker'
 };
 
 export const UserStore = signalStore(
