@@ -5,5 +5,6 @@ export * from './optimizacion'
 export * from './limites'
 export * from './continuidad'
 export * from './derivadas'
+export * from './logic-master'
 
 
