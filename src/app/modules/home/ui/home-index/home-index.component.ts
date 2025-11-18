@@ -5,7 +5,7 @@ import { QuestionsComponent } from '@home-module/ui/components';
 import { IQuestion, Level, Topic } from '@interfaces/questions';
 import { MessageModule } from 'primeng/message';
 import { UserStore } from '../../../../core/store';
-import { MATH_TRACKER, VECTOR_QUESTIONS } from '@constants/index';
+import { MATH_TRACKER, VECTOR_QUESTIONS, VECTOR_QUESTIONS_LOGIC_MASTER } from '@constants/index';
 
 type Severity = 'success' | 'info' | 'warn' | 'error';
 
@@ -48,7 +48,13 @@ export default class HomeIndexComponent {
         if (this.level && this.level in VECTOR_QUESTIONS) {
           this.questions = VECTOR_QUESTIONS[this.level];
         }
-      } else {
+      }
+      if (this.store.mode() === 'logic-master') {
+        if (this.level && this.level in VECTOR_QUESTIONS_LOGIC_MASTER) {
+          this.questions = VECTOR_QUESTIONS_LOGIC_MASTER[this.level];
+        }
+      }
+      if (this.store.mode() === 'tracker') {
         if (this.topic && this.topic in MATH_TRACKER) {
           this.questions = MATH_TRACKER[this.topic];
         }

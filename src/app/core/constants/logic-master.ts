@@ -1,4 +1,4 @@
-import { IQuestion } from "@interfaces/index";
+import { IQuestion, Level } from "@interfaces/index";
 
 // -------------------------------------
 // NIVEL FÁCIL (10 preguntas)
@@ -377,3 +377,9 @@ export const QUESTIONS_N3: IQuestion[] = [
     correctAnswerId: 'H10C'
   }
 ];
+
+export const VECTOR_QUESTIONS_LOGIC_MASTER: { [key in Level]: IQuestion[] } = {
+  easy: QUESTIONS_N1,
+  medium: QUESTIONS_N1,
+  hard: QUESTIONS_N3,
+};

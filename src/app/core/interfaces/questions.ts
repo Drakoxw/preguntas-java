@@ -14,7 +14,7 @@ export interface IQuestion {
 
 export type Level = 'easy' | 'medium' | 'hard';
 
-export type Mode = 'java' | 'tracker';
+export type Mode = 'java' | 'tracker'  | 'logic-master';
 
 export type Topic = 'optimization' | 'limits' | 'continuity' | 'derivatives';
 

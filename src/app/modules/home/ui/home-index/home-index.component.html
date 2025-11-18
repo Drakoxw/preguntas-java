@@ -1,17 +1,16 @@
 @if (questions.length > 0) {
 <div class="w-full p-8">
   @if(level) {
-    <p-message class="w-full" [severity]="titles[level].severity"
-      ><h5 class="w-full block font-bold text-center">{{ titles[level].title }}</h5></p-message
-    >
-  }
-  @if(topic) {
-    <p-message class="w-full" [severity]="titlesTopics[topic].severity"
-      ><h5 class="w-full block font-bold text-center">{{ titlesTopics[topic].title }}</h5></p-message
-    >
+  <p-message class="w-full" [severity]="titles[level].severity"
+    ><h5 class="w-full block font-bold text-center">{{ titles[level].title }}</h5></p-message
+  >
+  } @if(topic) {
+  <p-message class="w-full" [severity]="titlesTopics[topic].severity"
+    ><h5 class="w-full block font-bold text-center">{{ titlesTopics[topic].title }}</h5></p-message
+  >
   }
 </div>
-<app-questions class="w-full" [questions]="questions" />
+<app-questions class="w-full" [questions]="questions" [lengthToShow]="store.lengthToShow()" />
 } @else {
 <div class="w-full h-full flex flex-col justify-center items-center px-4">
   <img src="/assets/img/gifs-gatitos-suerte.gif" alt="gif-gatito" />

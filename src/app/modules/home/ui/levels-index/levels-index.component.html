@@ -1,5 +1,5 @@
 <div class="flex w-full justify-center items-center gap-4 flex-wrap mt-8 ">
-  @if(store.mode() === 'java') {
+  @if(store.mode() === 'java' || store.mode() === 'logic-master') {
     @for(level of levels; track level) {
       <app-qr-generator [level]="level"></app-qr-generator>
     }

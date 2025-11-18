@@ -6,13 +6,7 @@
         <!-- Logo -->
         <div>
           <a routerLink="/" class="flex items-center p-2 text-gray-700 hover:text-gray-900">
-            <img
-              class="w-12 h-12"
-              [src]="
-                store.mode() === 'java' ? '/assets/img/logo.webp' : '/assets/img/math-1.jpeg'
-              "
-              alt="drako-logo"
-            />
+            <img class="w-12 h-12" [src]="store.logo()" alt="cucu-logo" />
             <div class="flex flex-col ml-4">
               <span class="font-bold text-xl sm:text-3xl">{{ store.nameApp() }}</span>
               <small class="text-[8px] hidden text-end font-bold text-gray-700 sm:block"

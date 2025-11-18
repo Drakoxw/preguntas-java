@@ -19,7 +19,7 @@ import { Base64Util } from '@shared/utils';
 export class QuestionsComponent {
   @Input() lengthToShow: number = 5;
   @Input() set questions(data: IQuestion[]) {
-    this._questions.set(this.filterRandomQuestions(data))
+    setTimeout(() => this._questions.set(this.filterRandomQuestions(data)), 100);
   }
   _questions = signal<IQuestion[]>([]);
   public visible = false;
